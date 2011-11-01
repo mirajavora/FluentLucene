@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Document\DocumentBuilderSpec.cs" />
     <Compile Include="Document\IndexWriterSpec.cs" />
+    <Compile Include="Extensions\ReflectionExtensionsSpec.cs" />
     <Compile Include="Mapping\FluentMappingSpec.cs" />
     <Compile Include="Mapping\PropertyNameMappingSpec.cs" />
     <Compile Include="Model\Domain\ComplexObject.cs" />
