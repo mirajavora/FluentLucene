@@ -1,4 +1,6 @@
-﻿using FluentLucene.Mapping;
+﻿using System;
+using System.Linq.Expressions;
+using FluentLucene.Mapping;
 using Lucene.Net.Documents;
 
 namespace FluentLucene.Builders
@@ -12,6 +14,12 @@ namespace FluentLucene.Builders
             {
                 //var value = map.
                 var value = map.Member.GetValue(item) ?? string.Empty; //handle this better?
+                if (map.ExpressionDelegate != null)
+                {
+                    var obj = map.ExpressionDelegate.DynamicInvoke(value);
+                    value = obj;
+                }
+
                 var field = new Field(map.Name, value.ToString(), map.Store, map.Index, map.TermVector);
                 doc.Add(field);
             }

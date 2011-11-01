@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using FluentLucene.Members;
 using Lucene.Net.Documents;
 
@@ -26,5 +27,6 @@ namespace FluentLucene.Mapping
         public string Name { get; set; }
         internal Type Type { get; set; }
         internal Member Member { get; set; }
+        internal Delegate ExpressionDelegate { get; set; }
     }
 }

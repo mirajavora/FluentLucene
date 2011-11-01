@@ -16,20 +16,20 @@ namespace FluentLucene.Mapping
             _mappings = new List<PropertyMapping>();
         }
 
-        public PropertyBuilder Map(Expression<Func<T, object>> memberExpression)
+        public PropertyBuilder<TMember> Map<TMember>(Expression<Func<T, TMember>> memberExpression)
         {
-            return Map(memberExpression, default(string));
+            return Map<TMember>(memberExpression, default(string));
         }
 
-        public PropertyBuilder Map(Expression<Func<T, object>> memberExpression, string columnName)
+        public PropertyBuilder<TMember> Map<TMember>(Expression<Func<T, TMember>> memberExpression, string columnName)
         {
-            return Map(ReflectionExtensions.ToMember<T, object>(memberExpression), columnName);
+            return Map<TMember>(ReflectionExtensions.ToMember(memberExpression), columnName);
         }
 
-        protected virtual PropertyBuilder Map(Member property, string columnName)
+        protected virtual PropertyBuilder<TMember> Map<TMember>(Member property, string columnName)
         {
             var mapping = new PropertyMapping();
-            var propertyBuilder = new PropertyBuilder(mapping, typeof(T), property);
+            var propertyBuilder = new PropertyBuilder<TMember>(mapping, typeof(T), property);
             if (!string.IsNullOrEmpty(columnName))
                 propertyBuilder.Name(columnName);
             else
