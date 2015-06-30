@@ -66,7 +66,7 @@ namespace FluentLucene.Tests.Document
             [Test]
             public void array_is_flat()
             {
-                var result = _document.GetField("ListOfItems").StringValue();
+                var result = _document.GetField("ListOfItems").StringValue;
                 result.ShouldEqual("One Two");
             }
         }
